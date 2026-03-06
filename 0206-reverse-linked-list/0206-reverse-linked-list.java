@@ -10,11 +10,11 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        if (head == null){
+        if(head == null){
             return null;
         }
         ListNode newhead = head;
-        if (head.next != null){
+        if(head.next != null){
             newhead = reverseList(head.next);
             head.next.next = head;
         }
