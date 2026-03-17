@@ -15,19 +15,17 @@
  */
 class Solution {
     public TreeNode constructMaximumBinaryTree(int[] nums) {
-        return buildTree(nums, 0, nums.length - 1);
-    }
-    private TreeNode buildTree(int[] nums, int left, int right){
-        if(left > right) return null;
-        int max = left;
-        for(int i = left;i <= right;i++){
-            if(nums[i] > nums[max]){
-                max = i;
+        Stack<TreeNode> stack = new Stack<>();
+        for(int num : nums){
+            TreeNode curr = new TreeNode(num);
+            while(!stack.isEmpty() && stack.peek().val < num){
+                curr.left = stack.pop();
             }
+            if(!stack.isEmpty()){
+                stack.peek().right = curr;
+            }
+            stack.push(curr);
         }
-        TreeNode root = new TreeNode(nums[max]);
-        root.left = buildTree(nums, left, max - 1);
-        root.right = buildTree(nums, max + 1, right);
-        return root;
+        return stack.firstElement();
     }
 }
