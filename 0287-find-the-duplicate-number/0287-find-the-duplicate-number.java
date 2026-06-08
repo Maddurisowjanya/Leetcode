@@ -4,9 +4,7 @@ class Solution {
         for(int num : nums){
             if(set.contains(num)){
                 return num;
-            }
-            set.add(num);
-        }
-        return -1;
+            }set.add(num);
+        }return -1;
     }
 }
