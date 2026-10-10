@@ -1,12 +1,14 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
-        Map<Character, Integer> map = new HashMap<>();
-        if(s.length() != t.length()) return false;
-        for(int i = 0; i < s.length();i++){
-            map.put(s.charAt(i), map.getOrDefault(s.charAt(i),0)+1);
-            map.put(t.charAt(i),map.getOrDefault(t.charAt(i),0)-1);
+        if(s.length() != t.length()){
+            return false;
         }
-        for(int num : map.values()){
+        int [] freq = new int[26];
+        for(int i = 0; i < s.length(); i++){
+            freq[s.charAt(i) - 'a']++;
+            freq[t.charAt(i) - 'a']--;
+        }
+        for(int num : freq){
             if(num != 0){
                 return false;
             }
