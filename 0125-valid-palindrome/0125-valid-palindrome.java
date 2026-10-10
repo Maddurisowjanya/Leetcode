@@ -6,7 +6,7 @@ class Solution {
                 sb.append(Character.toLowerCase(c));
             }
         }
-        int left = 0, right = sb.length() - 1;
+        int left = 0, right = sb.length()-1;
         while(left < right){
             if(sb.charAt(left) != sb.charAt(right)){
                 return false;
@@ -15,5 +15,5 @@ class Solution {
             right--;
         }
         return true;
-        }
     }
+}
